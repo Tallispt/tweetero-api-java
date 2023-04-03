@@ -10,6 +10,8 @@ import com.tweetero.api.dtos.UserDTO;
 import com.tweetero.api.models.User;
 import com.tweetero.api.services.UserService;
 
+import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/sign-up")
@@ -19,7 +21,7 @@ public class authController {
   private UserService service;
 
   @PostMapping
-  public User insertUser(@RequestBody UserDTO req) {
+  public User insertUser(@RequestBody @Valid UserDTO req) {
     return service.save(req);
   }
   

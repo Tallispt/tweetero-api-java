@@ -11,7 +11,7 @@ import com.tweetero.api.repositories.UserRepository;
 @Service
 public class UserService {
 
-  @Autowired(required = false)
+  @Autowired
   private UserRepository repository;
 
   public User save(UserDTO dto){
