@@ -33,6 +33,19 @@ public class TweetRepository {
       .collect(Collectors.toList());
   }
 
+  public List<Tweet> findByUsernameByPagination(String username, int page) {
+    List<Tweet> filteredTweets = tweets.stream()
+      .filter(tweet -> username.equals(tweet.getUsername()))
+      .collect(Collectors.toList());
+
+      int fromIndex = (page - 1) * 5;
+      if(filteredTweets == null || filteredTweets.size() <= fromIndex){
+          return Collections.emptyList();
+      }
+  
+      return filteredTweets.subList(fromIndex, Math.min(fromIndex + 5, filteredTweets.size()));
+  }
+
   public Tweet save(Tweet tweet, List<User> users){
     User tweetUser = findUsernameByTweet(tweet, users);
     tweet.setAvatar(tweetUser.getAvatar());

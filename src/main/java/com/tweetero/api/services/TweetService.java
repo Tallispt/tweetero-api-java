@@ -24,8 +24,11 @@ public class TweetService {
     return repository.findByPagination(page);
   }
 
-  public List<Tweet> findByUsername(String username) {
-    return repository.findByUsername(username);
+  public List<Tweet> findByUsername(String username, int page) {
+    if(page == 0) {
+      return repository.findByUsername(username);
+    }
+      return repository.findByUsernameByPagination(username, page);
   }
 
   public Tweet save(TweetDTO dto){
