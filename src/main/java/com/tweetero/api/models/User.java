@@ -16,7 +16,8 @@ public class User {
     this.avatar = dto.avatar();
   }
 
-  public User(String username) {
+  public User(String username, String avatar) {
     this.username = username;
+    this.avatar = avatar;
   }
 }

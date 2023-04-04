@@ -12,11 +12,19 @@ public class UserRepository {
   private List<User> users = new ArrayList<User>();
 
   public List<User> findAll(){
-    return users;
+    return this.users;
+  }  
+
+  public User findByUsername(String username){
+    for(User user : users) {
+      if(user.getUsername().equals(username));
+      return user;
+    }
+    return new User();
   }
 
   public User save(User user) {
-    users.add(user);
+    this.users.add(user);
     return user;
   }
 }

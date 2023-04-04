@@ -12,12 +12,8 @@ import lombok.NoArgsConstructor;
 public class Tweet extends User {
   private String tweet;
 
-  public Tweet(TweetDTO dto){
-    super(dto.username());
+  public Tweet(TweetDTO dto, String avatar){
+    super(dto.username(), avatar);
     this.tweet = dto.tweet();
-  }
-
-  public void setAvatar(String avatar){
-    super.setAvatar(avatar);
   }
 }

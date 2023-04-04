@@ -1,5 +1,6 @@
 package com.tweetero.api.services;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,22 +22,34 @@ public class TweetService {
   private UserRepository userRepository;
 
   public List<Tweet> find(int page) {
-    if(page == 0) {
-      return repository.findAll();
+    List<Tweet> tweets = repository.findAll();
+
+    if(page > 0) {
+      return paginateList(tweets, page);
     }
-    return repository.findByPagination(page);
+    return tweets;
   }
 
   public List<Tweet> findByUsername(String username, int page) {
-    if(page == 0) {
-      return repository.findByUsername(username);
+    List<Tweet> filteredTweets = repository.findByUsername(username);
+
+    if(page > 0) {
+      return paginateList(filteredTweets, page);
     }
-      return repository.findByUsernameByPagination(username, page);
+    return filteredTweets;
   }
 
   public Tweet save(TweetDTO dto){
-    List<User> users = userRepository.findAll();
-    // return 
-    return repository.save(new Tweet(dto), users);
+    User user = userRepository.findByUsername(dto.username());
+    return repository.save(new Tweet(dto, user.getAvatar()));
+  }
+
+  public List<Tweet> paginateList(List<Tweet> list,int page) {
+    int fromIndex = (page - 1) * 5;
+    if(list == null || list.size() <= fromIndex){
+        return Collections.emptyList();
+    }
+
+    return list.subList(fromIndex, Math.min(fromIndex + 5, list.size()));
   }
 }
