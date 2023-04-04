@@ -15,7 +15,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/sign-up")
-public class authController {
+public class AuthController {
   
   @Autowired
   private UserService service;

@@ -11,8 +11,12 @@ public class User {
   private String username;
   private String avatar;
 
-  public User(UserDTO req) {
-    this.username = req.username() ;
-    this.avatar = req.avatar();
+  public User(UserDTO dto) {
+    this.username = dto.username() ;
+    this.avatar = dto.avatar();
+  }
+
+  public User(String username) {
+    this.username = username;
   }
 }
