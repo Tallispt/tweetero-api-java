@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,10 +30,11 @@ public class TweetController {
     return service.find(page);
   }
 
-  // @GetMapping("/{username}")
-  // public List<Tweet> getTweetsByUsername(@RequestParam String username) {
-  //     return service.findByUsername(username);
-  // }
+  @GetMapping("/{username}")
+  public List<Tweet> getTweetsByUsername(@PathVariable String username) {
+    System.out.println(username);
+    return service.findByUsername(username);
+  }
   
   @PostMapping
   public Tweet insertTweet(@RequestBody @Valid TweetDTO req) {

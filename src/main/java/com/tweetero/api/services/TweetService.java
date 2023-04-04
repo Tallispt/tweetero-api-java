@@ -24,9 +24,9 @@ public class TweetService {
     return repository.findByPagination(page);
   }
 
-  // public Tweet findByUsername(String username) {
-  //   return repository.findByUsername(username);
-  // }
+  public List<Tweet> findByUsername(String username) {
+    return repository.findByUsername(username);
+  }
 
   public Tweet save(TweetDTO dto){
     // List<User> users = repository.findAll();

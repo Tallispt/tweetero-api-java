@@ -3,6 +3,7 @@ package com.tweetero.api.repositories;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
@@ -26,9 +27,11 @@ public class TweetRepository {
     return tweets.subList(fromIndex, Math.min(fromIndex + 5, tweets.size()));
   }
 
-  // public Tweet findByUsername(String username) {
-  //   tweets.
-  // }
+  public List<Tweet> findByUsername(String username) {
+    return tweets.stream()
+      .filter(tweet -> username.equals(tweet.getUsername()))
+      .collect(Collectors.toList());
+  }
 
   public Tweet save(Tweet tweet, List<User> users){
     User tweetUser = findUsernameByTweet(tweet, users);
