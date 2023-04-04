@@ -17,8 +17,11 @@ public class TweetService {
   @Autowired
   private TweetRepository repository;
 
-  public List<Tweet> find() {
-    return repository.findAll();
+  public List<Tweet> find(int page) {
+    if(page == 0) {
+      return repository.findAll();
+    }
+    return repository.findByPagination(page);
   }
 
   // public Tweet findByUsername(String username) {

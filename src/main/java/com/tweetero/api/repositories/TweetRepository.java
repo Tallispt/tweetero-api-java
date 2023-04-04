@@ -1,6 +1,7 @@
 package com.tweetero.api.repositories;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,15 @@ public class TweetRepository {
 
   public List<Tweet> findAll() {
     return tweets;
+  }
+
+  public List<Tweet> findByPagination(int page) {
+    int fromIndex = (page - 1) * 5;
+    if(tweets == null || tweets.size() <= fromIndex){
+        return Collections.emptyList();
+    }
+
+    return tweets.subList(fromIndex, Math.min(fromIndex + 5, tweets.size()));
   }
 
   // public Tweet findByUsername(String username) {
