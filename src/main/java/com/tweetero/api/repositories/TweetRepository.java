@@ -43,7 +43,7 @@ public class TweetRepository {
           return Collections.emptyList();
       }
   
-      return filteredTweets.subList(fromIndex, Math.min(fromIndex + 5, filteredTweets.size()));
+    return filteredTweets.subList(fromIndex, Math.min(fromIndex + 5, filteredTweets.size()));
   }
 
   public Tweet save(Tweet tweet, List<User> users){
@@ -61,5 +61,5 @@ public class TweetRepository {
       return user;
     }
     return new User();
-}
+  }
 }

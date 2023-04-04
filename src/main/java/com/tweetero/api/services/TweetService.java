@@ -1,6 +1,5 @@
 package com.tweetero.api.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +9,16 @@ import com.tweetero.api.dtos.TweetDTO;
 import com.tweetero.api.models.Tweet;
 import com.tweetero.api.models.User;
 import com.tweetero.api.repositories.TweetRepository;
+import com.tweetero.api.repositories.UserRepository;
 
 @Service
 public class TweetService {
   
   @Autowired
   private TweetRepository repository;
+
+  @Autowired
+  private UserRepository userRepository;
 
   public List<Tweet> find(int page) {
     if(page == 0) {
@@ -32,8 +35,8 @@ public class TweetService {
   }
 
   public Tweet save(TweetDTO dto){
-    // List<User> users = repository.findAll();
-    List<User> users = new ArrayList<>();
+    List<User> users = userRepository.findAll();
+    // return 
     return repository.save(new Tweet(dto), users);
   }
 }

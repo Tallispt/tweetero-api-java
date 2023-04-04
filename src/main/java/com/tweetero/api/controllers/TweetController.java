@@ -37,6 +37,6 @@ public class TweetController {
   
   @PostMapping
   public Tweet insertTweet(@RequestBody @Valid TweetDTO req) {
-      return service.save(req);
+    return service.save(req);
   }
 }
