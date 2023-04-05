@@ -3,6 +3,8 @@ package com.tweetero.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,7 +38,11 @@ public class TweetController {
   }
   
   @PostMapping
-  public Tweet insertTweet(@RequestBody @Valid TweetDTO req) {
-    return service.save(req);
+  public ResponseEntity<String> insertTweet(@RequestBody @Valid TweetDTO req) {
+    Tweet tweet = service.save(req);
+    if(tweet.equals(new Tweet())){
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User does not exist!");
+    }
+    return ResponseEntity.status(HttpStatus.CREATED).body("OK");
   }
 }

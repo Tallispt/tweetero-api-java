@@ -41,6 +41,9 @@ public class TweetService {
 
   public Tweet save(TweetDTO dto){
     User user = userRepository.findByUsername(dto.username());
+    if(user.equals(new User())){
+      return new Tweet();
+    }
     return repository.save(new Tweet(dto, user.getAvatar()));
   }
 
