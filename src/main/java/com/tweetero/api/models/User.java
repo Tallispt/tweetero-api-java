@@ -21,7 +21,7 @@ public class User {
     this.avatar = avatar;
   }
 
-  public boolean isEmpty() {
-    return (this.username == null || this.avatar == null);
+  public boolean emptyFinder() {
+    return (username == null || avatar == null);
   }
 }

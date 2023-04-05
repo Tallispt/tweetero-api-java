@@ -17,7 +17,7 @@ public class Tweet extends User {
     this.tweet = dto.tweet();
   }
 
-  public boolean isEmpty(){
-    return (tweet == null || super.isEmpty());
+  public boolean emptyFinderFinder(){
+    return (tweet == null || super.emptyFinder());
   }
 }

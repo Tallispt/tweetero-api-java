@@ -16,8 +16,8 @@ public class UserService {
 
   public User save(UserDTO dto){
     User user = repository.findByUsername(dto.username());
-    
-    if(user.isEmpty()) {
+    System.out.println(new User(dto));
+    if(user.emptyFinder()) {
       return repository.save(new User(dto));
     }
     return new User();

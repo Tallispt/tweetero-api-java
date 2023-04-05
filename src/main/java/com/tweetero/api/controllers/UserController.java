@@ -17,7 +17,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/sign-up")
-public class AuthController {
+public class UserController {
   
   @Autowired
   private UserService service;
@@ -25,7 +25,7 @@ public class AuthController {
   @PostMapping
   public ResponseEntity<String> insertUser(@RequestBody @Valid UserDTO req) {
     User user = service.save(req);
-    if(user.isEmpty()) {
+    if(user.emptyFinder()) {
       return ResponseEntity.status(HttpStatus.CONFLICT).body("User already exists!");
     }
     return ResponseEntity.status(HttpStatus.CREATED).body("OK");

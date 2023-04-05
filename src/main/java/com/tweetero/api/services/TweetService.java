@@ -32,7 +32,7 @@ public class TweetService {
 
   public List<Tweet> findByUsername(String username, int page) {
     List<Tweet> filteredTweets = repository.findByUsername(username);
-
+    
     if(page > 0) {
       return paginateList(filteredTweets, page);
     }
@@ -41,7 +41,7 @@ public class TweetService {
 
   public Tweet save(TweetDTO dto){
     User user = userRepository.findByUsername(dto.username());
-    if(user.equals(new User())){
+    if(user.emptyFinder()){
       return new Tweet();
     }
     return repository.save(new Tweet(dto, user.getAvatar()));
