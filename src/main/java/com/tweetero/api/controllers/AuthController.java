@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tweetero.api.dtos.UserDTO;
+import com.tweetero.api.models.User;
 import com.tweetero.api.services.UserService;
 
 import jakarta.validation.Valid;
@@ -23,7 +24,10 @@ public class AuthController {
 
   @PostMapping
   public ResponseEntity<String> insertUser(@RequestBody @Valid UserDTO req) {
-    service.save(req);
+    User user = service.save(req);
+    if(user.isEmpty()) {
+      return ResponseEntity.status(HttpStatus.CONFLICT).body("User already exists!");
+    }
     return ResponseEntity.status(HttpStatus.CREATED).body("OK");
   }
   

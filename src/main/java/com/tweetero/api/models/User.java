@@ -20,4 +20,8 @@ public class User {
     this.username = username;
     this.avatar = avatar;
   }
+
+  public boolean isEmpty() {
+    return (this.username == null || this.avatar == null);
+  }
 }

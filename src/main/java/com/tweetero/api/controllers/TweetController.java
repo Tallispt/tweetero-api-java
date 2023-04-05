@@ -40,7 +40,7 @@ public class TweetController {
   @PostMapping
   public ResponseEntity<String> insertTweet(@RequestBody @Valid TweetDTO req) {
     Tweet tweet = service.save(req);
-    if(tweet.equals(new Tweet())){
+    if(tweet.isEmpty()){
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User does not exist!");
     }
     return ResponseEntity.status(HttpStatus.CREATED).body("OK");

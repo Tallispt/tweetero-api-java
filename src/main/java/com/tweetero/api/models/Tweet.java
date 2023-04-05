@@ -16,4 +16,8 @@ public class Tweet extends User {
     super(dto.username(), avatar);
     this.tweet = dto.tweet();
   }
+
+  public boolean isEmpty(){
+    return (tweet == null || super.isEmpty());
+  }
 }

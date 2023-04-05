@@ -15,6 +15,11 @@ public class UserService {
   private UserRepository repository;
 
   public User save(UserDTO dto){
-    return repository.save(new User(dto));
+    User user = repository.findByUsername(dto.username());
+    
+    if(user.isEmpty()) {
+      return repository.save(new User(dto));
+    }
+    return new User();
   }
 }
