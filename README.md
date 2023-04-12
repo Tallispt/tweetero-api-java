@@ -18,6 +18,7 @@ Description
 ## Technologies Used
 
 - [Spring-Boot](https://spring.io/)
+- [Maven](https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/htmlsingle/)
 
 ## Usage
 
