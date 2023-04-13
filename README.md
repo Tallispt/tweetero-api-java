@@ -2,6 +2,8 @@
 
 This REST API project, inspired by the backend of Twitter, has been implemented using *Spring Boot framework in Java*. The project follows the same functionality as the previous implementation, providing basic functionality for creating a user account, posting a tweet, and retrieving tweets from a user's timeline.
 
+Here you can find the respective repository for the front end application [Tweteroo](https://github.com/Tallispt/tweteroo-front).
+
 ## Other versions:
 - ### [Tweetero API](https://github.com/Tallispt/tweteroo/tree/main)
 
@@ -22,11 +24,23 @@ A version using layered architecture and objects oriented programming in *TypeSc
 
 ## Usage
 
-Fork or clone repository
+* Clone this repository 
+* Make sure you are using JDK 1.8 and Maven 3.x
+* You can build the project and run the tests by running ```mvn clean package```
+* Once successfully built, you can run the service by one of these two methods:
+```
+        java -jar -Dspring.profiles.active=test target/spring-boot-rest-example-0.5.0.war
+or
+        mvn spring-boot:run -Drun.arguments="spring.profiles.active=test"
+```
+* Check the stdout or boot_example.log file to make sure no exceptions are thrown
 
-...
+Once the application runs you should see something like this
 
-The api will be available at http://localhost:5000.
+```
+2017-08-29 17:31:23.091  INFO 19387 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8090 (http)
+2017-08-29 17:31:23.097  INFO 19387 --- [           main] com.khoubyari.example.Application        : Started Application in 22.285 seconds (JVM running for 23.032)
+```
 
 ## Routers
 
