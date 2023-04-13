@@ -1,6 +1,6 @@
 # Tweteroo API in Java
 
-Description
+This REST API project, inspired by the backend of Twitter, has been implemented using *Spring Boot framework in Java*. The project follows the same functionality as the previous implementation, providing basic functionality for creating a user account, posting a tweet, and retrieving tweets from a user's timeline.
 
 ## Other versions:
 - ### [Tweetero API](https://github.com/Tallispt/tweteroo/tree/main)
@@ -9,11 +9,11 @@ A simple version of tweteroo rest-api in JavaScript.
 
 - ### [Tweteroo API OOP-JS](https://github.com/Tallispt/tweteroo/tree/oop-js)
 
-Descrition
+A version using layered architecture and *objects oriented programming*
 
 - ### [Tweteroo API OOP-TS](https://github.com/Tallispt/tweteroo/tree/oop-ts)
 
-Description
+A version using layered architecture and objects oriented programming in *TypeScript*.
 
 ## Technologies Used
 
